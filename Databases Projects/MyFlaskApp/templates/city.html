@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <!--
+Fitness Template
+http://www.templatemo.com/tm-487-fitness
+-->
+<title>{{ title }}</title>
+
+
+</head>
+    <body>
+
+        <table>
+            <thead><tr><th>City</th><th>Year</th></thead>
+            <tbody>
+                {% for row in data: %}
+                <tr><td>{{ row['city'] }}</td><td>{{ row['year'] }}</td><td>{{ row['length'] }}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $.getJSON("http://127.0.0.1:5000/json/year/" + $( "#titleq" ).val(),
+          function( data ) {
+            var items = [];
+            $.each( data['City'], function( key, val ) {
+              items.push( "<li>" + val.city + "; " + val.year + ";" + "</li>" );
+            });
+ 
+            $( "<ul/>", {
+              "class": "my-new-list",
+              html: items.join( "" )
+            }).appendTo( "#jsonresult" );
+        });
+    });
+});
+</script>
+</head>
+<body>
+
+<button>Get Year JSON</button>
+<input type="text" id="titleq"></input>
+
+<div id="jsonresult"></div>
+
+</body>
+</html>
+
