@@ -1,0 +1,13 @@
+def main():
+    fileName = input("What file are the numbers in? ") + ".gif"
+    win = GraphWin("Picture", 1000, 1000)
+    win.setCoords(-6, -6, 6, 6)
+    win.setBackground("gray")
+    image = Image(Point(0,0), fileName)
+    image.draw(win)
+    
+
+    
+    #infile = open(fileName, 'r')
+
+main()
