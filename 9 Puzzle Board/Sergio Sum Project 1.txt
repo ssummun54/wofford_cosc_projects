@@ -1,0 +1,73 @@
+(*1*)
+fun divideAll(int1, 0) = (0, 0, 0.0)
+    | divideAll(int1, int2) = (trunc(real(int1) / real(int2)), int1 mod int2, real(int1) / real(int2))
+	
+(*2*)
+fun reverse("") = ""
+    | reverse(word) = substring(word, size(word) - 1, 1) ^ reverse(substring(word, 0, size(word) - 1))
+
+(*3*)
+fun series(0, a, r) = a
+    | series(n, a, r) = a * Math.pow(r, real(n)) + series(n - 1, a, r)
+	
+(*4*)
+fun zip(xs, []) = []
+    | zip([], ys) = []
+    | zip(x::xs, y::ys) = (x, y)::zip(xs, ys)
+	
+(*5a*)
+fun member(elt, []) = false
+    | member(elt, x::xs) =
+        if elt = x then
+            true
+        else
+            member(elt, xs)
+
+(*5b*)
+fun intervalSet(0, 0) = [0]
+    | intervalSet(m, n) =
+        if m > n then []
+        else
+            intervalSet(m,  n - 1)@[n]
+			
+(*5c*)
+fun member(elt, []) = false
+    | member(elt, x::xs) =
+        if elt = x then
+            true
+        else
+            member(elt, xs)
+
+
+fun setIntersections(xs, []) = []
+    | setIntersections([], ys) = []
+    | setIntersections(x::xs, ys) = 
+        if member(x, ys) then
+            x::setIntersections(xs, ys)
+        else
+            setIntersections(xs,ys)
+
+(*5d*)
+fun g("") = ""
+    | g(word) = substring(word, size(word) - 1, 1) ^ g(substring(word, 0, size(word) - 1))
+            
+
+fun setMap(g, []) = []
+    | setMap(g, x::xs) = g(x)::setMap(g, xs)
+	
+(*6a*)
+datatype natural = Zero | Successor of natural;
+
+fun isEven(Zero) = true
+    | isEven(Successor(value)) = 
+        if isEven(value) then
+            false
+        else
+            true
+			
+(*6b*)
+datatype natural = Zero | Successor of natural;
+
+fun plus(x, Zero) = x
+    | plus(Zero, y) = y
+    | plus(Successor(x), Successor(y)) = plus(Successor(Successor(x)), y)
